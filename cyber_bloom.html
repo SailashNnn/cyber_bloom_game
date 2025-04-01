@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cyber Bloom 🌸</title>
+
+    <style>
+
+        body { font-family: Arial, sans-serif; background: linear-gradient(to right, #ff9a9e, #fad0c4); text-align: center; color: #333; padding: 20px; }
+
+        .container { max-width: 700px; margin: auto; padding: 20px; background: #fff5e6; border-radius: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); }
+
+        h1 { color: #ff4d6d; }
+
+        .question { font-size: 20px; margin-bottom: 15px; font-weight: bold; }
+
+        .options button { background: #ffb6c1; color: white; border: none; padding: 10px 15px; margin: 5px; cursor: pointer; border-radius: 5px; font-size: 16px; }
+
+        .options button:hover { background: #ff4d6d; }
+
+        #result { font-size: 22px; font-weight: bold; margin-top: 20px; }
+
+        .flower { font-size: 50px; }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<div class="container">
+
+    <h1>🌸 Cyber Bloom: Spring Cybersecurity Quiz 🌸</h1>
+
+    <p id="story">Welcome to the digital garden! Your mission is to protect it from cyber threats. Are you ready?</p>
+
+    <p id="question" class="question">Loading...</p>
+
+    <div id="options" class="options"></div>
+
+    <p id="result"></p>
+
+    <p class="flower">🌷🌼🌻</p>
+
+</div>
+
+
+
+<script>
+
+const questions = [
+
+    { question: "Which protocol secures websites?", options: ["HTTP", "HTTPS", "FTP", "SSH"], correct: 1 },
+
+    { question: "What is digital detox?", options: ["Removing viruses", "Taking breaks from digital devices", "Data protection", "Filtering traffic"], correct: 1 },
+
+    { question: "What ensures safe online transactions?", options: ["Public Wi-Fi", "Two-factor authentication", "Weak passwords", "Sharing credentials"], correct: 1 },
+
+    { question: "What does a VPN do?", options: ["Encrypts internet traffic", "Deletes files", "Speeds up the internet", "Blocks ads"], correct: 0 },
+
+    { question: "Which password is strongest?", options: ["123456", "password", "Qw!7sD$9*", "admin"], correct: 2 },
+
+    { question: "How can you protect your online accounts?", options: ["Use simple passwords", "Never change passwords", "Enable two-factor authentication", "Ignore security alerts"], correct: 2 },
+
+    { question: "Which is the safest connection?", options: ["Public Wi-Fi", "VPN + HTTPS", "Internet café networks", "Unsecured Bluetooth"], correct: 1 },
+
+    { question: "Which devices can be hacked?", options: ["Only computers", "Only phones", "Any device connected to the internet", "Only gaming consoles"], correct: 2 },
+
+    { question: "What is phishing?", options: ["A cyber-attack to steal data", "A network protocol", "A secure connection method", "A way to speed up downloads"], correct: 0 },
+
+    { question: "What should you check before clicking a link?", options: ["The font style", "The URL and sender", "The background color", "The number of words"], correct: 1 },
+
+    { question: "Why is public Wi-Fi risky?", options: ["It is too fast", "It is often unsecured", "It costs too much", "It doesn’t support HTTPS"], correct: 1 },
+
+    { question: "What should you do if your account is hacked?", options: ["Ignore it", "Change your password and enable 2FA", "Delete your device", "Tell no one"], correct: 1 },
+
+    { question: "How often should you update your software?", options: ["Never", "Only when you have time", "As soon as updates are available", "Once a year"], correct: 2 },
+
+    { question: "What is a strong password strategy?", options: ["Use the same password for everything", "Include symbols, numbers, and uppercase letters", "Write it on paper", "Keep it under 6 characters"], correct: 1 },
+
+    { question: "What can malware do?", options: ["Improve computer speed", "Encrypt data for security", "Steal or damage your files", "Block ads"], correct: 2 }
+
+];
+
+
+
+let currentQuestion = 0;
+
+let score = 0;
+
+
+
+function loadQuestion() {
+
+    if (currentQuestion >= questions.length) {
+
+        document.getElementById("story").innerText = "Congratulations!";
+
+        document.getElementById("question").innerText = "You've completed the quiz and protected the digital garden!";
+
+        document.getElementById("options").innerHTML = "";
+
+        document.getElementById("result").innerText = `You scored ${score} out of ${questions.length}!`;
+
+        return;
+
+    }
+
+
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question").innerText = q.question;
+
+    document.getElementById("options").innerHTML = "";
+
+
+
+    q.options.forEach((option, index) => {
+
+        const btn = document.createElement("button");
+
+        btn.innerText = option;
+
+        btn.onclick = () => checkAnswer(index);
+
+        document.getElementById("options").appendChild(btn);
+
+    });
+
+}
+
+
+
+function checkAnswer(index) {
+
+    if (index === questions[currentQuestion].correct) {
+
+        score++;
+
+    }
+
+    currentQuestion++;
+
+    loadQuestion();
+
+}
+
+
+
+loadQuestion();
+
+</script>
+
+
+
+</body>
+
+</html>
